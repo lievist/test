@@ -1,0 +1,40 @@
+package hello;
+
+import java.util.Scanner;
+
+public class Test6_1 {
+
+	 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner(System.in);
+		
+		int num = in.nextInt();
+		cut( num );
+	}
+	
+	
+	private static void cut( int num ) {
+		// TODO Auto-generated method stub
+		int k=2;
+
+		System.out.print( num+"=");
+		while( k<=num )
+		{
+			if( k == num )
+			{
+				System.out.print( num );
+				break;
+			}
+			else if( num%k == 0 )
+			{
+				System.out.print( k + "x" );
+				num/=k;
+			}
+			else
+			{
+				k++;
+			}
+		}		
+	}
+}
