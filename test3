@@ -1,0 +1,138 @@
+package hello;
+
+import java.util.Scanner;
+
+public class Exa4_4 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int[][] board = new int[n][n];
+		boolean gotResult = false;
+		int numOfX = 0;
+		int numOfO = 0;
+		
+		// 读入矩阵
+		for( int i=0; i<board.length; i++ )
+		{
+			for( int j=0; j<board[i].length; j++ )
+			{
+				board[i][j] = in.nextInt();
+			}
+		}
+		
+		// 检查行
+		for( int i=0; i<n; i++)
+		{
+			numOfX = 0;
+			numOfO = 0;
+			for( int j=0; j<n; j++)
+			{
+				if( board[i][j] == 1)
+				{
+					numOfX++;
+				}
+				else if( board[i][j] == 0 )
+				{
+					numOfO++;
+				}
+			}
+			if( numOfX == n || numOfO == n )
+			{
+				gotResult = true;
+				break;
+			}
+		}
+		
+		// 检查列
+		if( !gotResult )
+		{
+			for( int i=0; i<n; i++)
+			{
+				numOfX = 0;
+				numOfO = 0;
+				for( int j=0; j<n; j++)
+				{
+					if( board[j][i] == 1 )
+					{
+						numOfX++;
+					}
+					else
+					{
+						numOfO++;
+					}
+				}
+				if( numOfX == n || numOfO == n )
+				{
+					gotResult = true;
+					break;
+				}
+			}
+		}
+		
+		// 检查对角线
+		if( !gotResult )
+		{
+			numOfX = 0;
+			numOfO = 0;
+			for( int i=0; i<n; i++)
+			{
+				if( board[i][i] == 1)
+				{
+					numOfX++;
+				}
+				else
+				{
+					numOfO++;
+				}
+			}
+			if( numOfX == n || numOfO == n )
+			{
+				gotResult = true;
+			}
+		}
+		
+		// 检查反对角线
+		if( !gotResult )
+		{
+			numOfX = 0;
+			numOfO = 0;
+			for( int i=0; i<n; i++)
+			{
+				if( board[i][n-i-1] == 1)
+				{
+					numOfX++;
+				}
+				else
+				{
+					numOfO++;
+				}
+			}
+			if( numOfX == n || numOfO == n )
+			{
+				gotResult = true;
+			}
+		}
+		
+		if( !gotResult)
+		{
+			System.out.print("NIL");
+		}
+		else
+		{
+			if( numOfX == n )
+			{
+				System.out.print("X");
+			}
+			else if( numOfO == n )
+			{
+				System.out.print("O");
+			}
+		}
+	}
+
+}
